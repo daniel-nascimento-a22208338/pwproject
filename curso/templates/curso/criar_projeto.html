@@ -1,0 +1,12 @@
+<!-- curso/criar_projeto.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h2>Criar Novo Projeto para a Disciplina: {{ disciplina.nome }}</h2>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="{% url 'curso:disciplina_detail' disciplina.id %}"><button type="button">Cancelar</button></a>
+{% endblock %}

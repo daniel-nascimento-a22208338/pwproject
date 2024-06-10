@@ -1,0 +1,14 @@
+{% extends "bands/layout.html" %}
+
+{% block title %}Criar Nova Música{% endblock %}
+
+{% block content %}
+<h2>Criar Nova Música para {{ album.name }}</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{% url 'bands:detalhes_album' album.id %}"><button type="button">Cancelar</button></a>
+{% endblock %}

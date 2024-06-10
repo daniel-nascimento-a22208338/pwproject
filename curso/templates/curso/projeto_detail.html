@@ -1,0 +1,13 @@
+<!-- projeto_detail.html -->
+
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h1>{{ projeto.nome }}</h1>
+  <p>Descrição do projeto: {{ projeto.descricao }}</p>
+  <p>Imagem do projeto:</p>
+  <img src="{{ projeto.imagem.url }}" alt="Imagem do projeto">
+
+  <p><a href="{% url 'curso:projeto_detail' projeto.id %}">Detalhes do Projeto</a></p>
+  <!-- O link acima leva à própria página de detalhes do projeto (opcional) -->
+{% endblock %}

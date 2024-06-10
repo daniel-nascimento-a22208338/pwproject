@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Meteo App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meteo/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Aplicação de Meteorologia</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'meteo:previsao_lisboa' %}">Previsão Lisboa</a></li>
+                <li>
+                    <form method="get" action="{% url 'meteo:previsao_cidade' %}">
+                        <label for="cidade">Selecione a Cidade:</label>
+                        <select name="cidade" id="cidade" onchange="this.form.submit()">
+                            <option value="">--Escolha uma cidade--</option>
+                            {% for id, nome in cidades.items %}
+                                <option value="{{ id }}" {% if cidade_id == id %}selected{% endif %}>{{ nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Meteo App</p>
+        <a href="{% url 'meteo:descricao_apis' %}">Info da API</a>
+    </footer>
+</body>
+</html>

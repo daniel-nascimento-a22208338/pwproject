@@ -1,0 +1,21 @@
+{% extends "artigos/layout.html" %}
+
+{% block title %}Perfil do Leitor - {{ leitor.pessoa.nome }}{% endblock %}
+
+{% block content %}
+<h2>Perfil do Leitor</h2>
+
+<div>
+    <h3>{{ leitor.pessoa.nome }}</h3>
+    {% if leitor.pessoa.foto_perfil %}
+        <img src="{{ leitor.pessoa.foto_perfil.url }}" alt="{{ leitor.pessoa.nome }}">
+    {% else %}
+        <p>Foto de perfil não disponível</p>
+    {% endif %}
+
+    <p>Nome de Usuário: {{ leitor.username }}</p>
+    <p>Email: {{ leitor.pessoa.email }}</p>
+    <p>Data de Registro: {{ leitor.date_joined }}</p>
+</div>
+
+{% endblock %}

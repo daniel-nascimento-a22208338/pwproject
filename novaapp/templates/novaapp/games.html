@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        #gameContainer {
+            text-align: center;
+        }
+
+        #gameCanvas {
+            border: 2px solid #333;
+            background-color: #ddd;
+        }
+
+        #controls {
+            margin-top: 20px;
+        }
+
+        #startButton, #difficultySelector {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="controls">
+            <button id="startButton">Start Game</button>
+            <label for="difficultySelector">Difficulty:</label>
+            <select id="difficultySelector">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        <div id="score">Score: 0</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const snakeSize = 20;
+        let snake = [{ x: 100, y: 100 }];
+        let food = { x: 200, y: 200 };
+        let dx = snakeSize;
+        let dy = 0;
+        let gameRunning = false;
+        let originalSpeed = 100; // Velocidade original do jogo (intervalo em milissegundos)
+        let gameLoopInterval;
+        let score = 0;
+
+        const difficultySelector = document.getElementById('difficultySelector');
+        const startButton = document.getElementById('startButton');
+        const scoreDisplay = document.getElementById('score');
+
+        function drawSnake() {
+            ctx.fillStyle = 'green';
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x, segment.y, snakeSize, snakeSize);
+            });
+        }
+
+        function drawFood() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(food.x, food.y, snakeSize, snakeSize);
+        }
+
+        function moveSnake() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+            // Verificar colisão com o próprio corpo da cobra
+            if (checkSelfCollision(head)) {
+                gameOver();
+                return;
+            }
+
+            // Verificar se a cabeça da cobra atingiu a borda da tela
+            if (head.x >= canvas.width) head.x = 0;
+            if (head.x < 0) head.x = canvas.width - snakeSize;
+            if (head.y >= canvas.height) head.y = 0;
+            if (head.y < 0) head.y = canvas.height - snakeSize;
+
+            snake.unshift(head);
+            if (head.x === food.x && head.y === food.y) {
+                eatFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        function eatFood() {
+            score++;
+            scoreDisplay.textContent = 'Score: ' + score;
+            generateFood();
+        }
+
+        function generateFood() {
+            food.x = Math.floor(Math.random() * canvas.width / snakeSize) * snakeSize;
+            food.y = Math.floor(Math.random() * canvas.height / snakeSize) * snakeSize;
+        }
+
+        function checkSelfCollision(head) {
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    return true; // Colisão detectada
+                }
+            }
+            return false; // Sem colisão
+        }
+
+        function gameOver() {
+            gameRunning = false;
+            clearInterval(gameLoopInterval); // Parar o loop do jogo
+            alert('Game Over! Your score: ' + score);
+            resetGame();
+        }
+
+        function resetGame() {
+            snake = [{ x: 100, y: 100 }]; // Reiniciar a cobra
+            dx = snakeSize;
+            dy = 0;
+            score = 0;
+            scoreDisplay.textContent = 'Score: 0';
+            generateFood(); // Gerar nova comida
+            // Reiniciar o loop do jogo com a velocidade selecionada
+            const selectedDifficulty = difficultySelector.value;
+            if (selectedDifficulty === 'easy') {
+                originalSpeed = 150;
+            } else if (selectedDifficulty === 'medium') {
+                originalSpeed = 100;
+            } else if (selectedDifficulty === 'hard') {
+                originalSpeed = 75;
+            }
+            if (gameRunning) {
+                clearInterval(gameLoopInterval); // Limpar intervalo anterior, se ainda estiver ativo
+            }
+            gameLoopInterval = setInterval(gameLoop, originalSpeed);
+        }
+
+        // Adicionar evento de clique ao botão de iniciar jogo
+        startButton.addEventListener('click', () => {
+            if (!gameRunning) {
+                gameRunning = true;
+                resetGame(); // Iniciar ou reiniciar o jogo
+            }
+        });
+
+        // Iniciar o jogo quando uma tecla de seta for pressionada
+        document.addEventListener('keydown', event => {
+            if (!gameRunning) {
+                if (event.key.startsWith('Arrow')) {
+                    gameRunning = true;
+                    resetGame(); // Iniciar ou reiniciar o jogo
+                }
+            } else {
+                if (event.key === 'ArrowUp' && dy === 0) { dx = 0; dy = -snakeSize; }
+                if (event.key === 'ArrowDown' && dy === 0) { dx = 0; dy = snakeSize; }
+                if (event.key === 'ArrowLeft' && dx === 0) { dx = -snakeSize; dy = 0; }
+                if (event.key === 'ArrowRight' && dx === 0) { dx = snakeSize; dy = 0; }
+            }
+        });
+    </script>
+</body>
+</html>

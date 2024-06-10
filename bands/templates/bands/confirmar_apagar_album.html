@@ -1,0 +1,13 @@
+{% extends "bands/layout.html" %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<h2>Confirmar Exclusão</h2>
+<p>Você tem certeza de que deseja excluir o álbum "{{ album.name }}"?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'bands:detalhes_banda' banda.id %}"><button type="button">Cancelar</button></a>
+</form>
+{% endblock %}

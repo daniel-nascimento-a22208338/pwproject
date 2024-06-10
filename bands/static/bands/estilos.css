@@ -1,0 +1,149 @@
+/* Estilos Gerais */
+*{
+    font-family: "Jacquard 12", system-ui, sans-serif;
+}
+button {
+    background-color:#C8A2C8;
+    border:none;
+    color: white;
+    border-radius:18px;
+    text-align:center;
+    display:inline-flex;
+    cursor:pointer;
+    font-size:20px;
+}
+button:hover{
+    background-color:crimson;
+    transform: scale(1.1)
+}
+button:active {
+    background-color:aqua;
+}
+button::before, button::after {
+  content: ''; /* Conteúdo vazio */
+  position: absolute; /* Posição absoluta */
+  width: 0; /* Largura inicial */
+  height: 2px; /* Altura da linha */
+  background-color:darkblue; /* Cor da linha */
+  transition: width 0.3s; /* Transição suave */
+}
+
+button::before {
+  top: 0; /* Posiciona na parte superior */
+  left: 0; /* Alinha à esquerda */
+}
+
+button::after {
+  bottom: 0; /* Posiciona na parte inferior */
+  right: 0; /* Alinha à direita */
+}
+
+/* Expande a linha ao passar o mouse */
+button:hover::before,
+button:hover::after {
+  width: 100%; /* Expande a linha até a largura completa */
+}
+a{
+  text-decoration: none;
+  font-size:20px;
+  background-color:white;
+  border-radius:15px;
+  padding: 3px;
+  margin:10px;
+}
+nav a i{
+  font-size: 0.7em;
+  margin-right: 8px
+}
+body a:visited {
+  color: firebrick; /* Cor secundária */
+}
+body a:hover {
+  color: forestgreen; /* Cor de hover */
+  background-color: peachpuff; /* Cor de fundo ao passar o mouse */
+}
+body a:active {
+  color:blueviolet; /* Cor ativa */
+}
+nav a:visited {
+  color: #008CBA; /* Cor secundária */
+}
+nav a:hover {
+  color: #45a049; /* Cor de hover */
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+nav a:active {
+  color:blueviolet; /* Cor ativa */
+}
+nav a::before, nav a::after {
+  content: ''; /* Conteúdo vazio */
+  position: absolute; /* Posição absoluta */
+  width: 0; /* Largura inicial */
+  height: 2px; /* Altura da linha */
+  background-color: #4CAF50; /* Cor da linha */
+  transition: width 0.3s; /* Transição suave */
+}
+
+nav a::before {
+  top: 0; /* Posiciona na parte superior */
+  left: 0; /* Alinha à esquerda */
+}
+
+nav a::after {
+  bottom: 0; /* Posiciona na parte inferior */
+  right: 0; /* Alinha à direita */
+}
+
+/* Expande a linha ao passar o mouse */
+nav a:hover::before,
+nav a:hover::after {
+  width: 100%; /* Expande a linha até a largura completa */
+}
+a{
+text-decoration:none;
+}
+nav a{
+  font-size:30px;
+}
+body {
+    background-image: url('stars-1837306.jpg');
+    background-repeat: repeat;
+    background-position: center center;
+    background-size:contain;
+}
+img{
+  width: 300px;
+  height:auto;
+  border-top: 10px solid yellow;
+  border-right: 10px solid green; /* Moldura direita */
+  border-bottom: 10px solid blue; /* Moldura inferior */
+  border-left: 10px solid red; /* Moldura esquerda */
+  margin-left: 50px;
+  margin-right:50px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+h1, h2, h3, h4, p, .user-info {
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semitransparente */
+  color: white; /* Cor do texto */
+  padding: 10px; /* EspaÃ§amento interno */
+  border-radius: 5px; /* Cantos arredondados */
+  margin: 20px 0; /* Margem ao redor dos cabeÃ§alhos */
+}
+
+nav {
+  display: flex;
+  justify-content: center; /* Centraliza os itens do nav */
+  gap: 10px; /* EspaÃ§amento entre os itens do nav */
+}
+
+
+
+
+
+
+
+
+
+
+

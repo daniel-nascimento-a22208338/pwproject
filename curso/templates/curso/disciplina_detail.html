@@ -1,0 +1,39 @@
+<!-- disciplina_detail.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h1>{{ disciplina.nome }}</h1>
+  <p>Carga Horária: {{ disciplina.carga_horaria }}</p>
+  <!-- Outras informações da disciplina aqui -->
+
+  <!-- Botão para adicionar novo projeto -->
+  {% if request.user.is_authenticated and pode_adicionar_projeto %}
+    <form action="{% url 'curso:criar_projeto' disciplina.id %}" method="get" style="display:inline;">
+      <button type="submit">Adicionar Novo Projeto</button>
+    </form>
+  {% endif %}
+
+  <!-- Projetos associados à disciplina -->
+  {% if disciplina.projetos.exists %}
+    <h2>Projetos da Disciplina</h2>
+    <ul>
+      {% for projeto in disciplina.projetos.all %}
+        <li>
+          {{ projeto.nome }}
+          <p><a href="{% url 'curso:projeto_detail' projeto.id %}">Detalhes do Projeto</a></p>
+          {% if request.user.is_authenticated and pode_editar_projeto %}
+            <form action="{% url 'curso:editar_projeto' projeto.id %}" method="get" style="display:inline;">
+              <button type="submit">Editar</button>
+            </form>
+          {% endif %}
+          {% if request.user.is_authenticated and pode_apagar_projeto %}
+            <form action="{% url 'curso:apagar_projeto' projeto.id %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este projeto?')">Apagar</button>
+            </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,74 @@
+[
+  {
+    "artist": "Banda A",
+    "name": "Álbum 1 da Banda A",
+    "release_date": "2022-05-10",
+    "num_stars": 4,
+    "ratings": 4.5,
+    "copies_sold": 100000
+  },
+  {
+    "artist": "Banda A",
+    "name": "Álbum 2 da Banda A",
+    "release_date": "2018-08-20",
+    "num_stars": 5,
+    "ratings": 4.8,
+    "copies_sold": 150000
+  },
+  {
+    "artist": "Banda A",
+    "name": "Álbum 3 da Banda A",
+    "release_date": "2015-03-15",
+    "num_stars": 3,
+    "ratings": 4.2,
+    "copies_sold": 80000
+  },
+  {
+    "artist": "Banda B",
+    "name": "Álbum 1 da Banda B",
+    "release_date": "2019-11-30",
+    "num_stars": 4,
+    "ratings": 4.4,
+    "copies_sold": 120000
+  },
+  {
+    "artist": "Banda B",
+    "name": "Álbum 2 da Banda B",
+    "release_date": "2016-07-05",
+    "num_stars": 5,
+    "ratings": 4.7,
+    "copies_sold": 180000
+  },
+  {
+    "artist": "Banda B",
+    "name": "Álbum 3 da Banda B",
+    "release_date": "2013-09-25",
+    "num_stars": 4,
+    "ratings": 4.3,
+    "copies_sold": 100000
+  },
+  {
+    "artist": "Banda C",
+    "name": "Álbum 1 da Banda C",
+    "release_date": "2020-04-12",
+    "num_stars": 4,
+    "ratings": 4.6,
+    "copies_sold": 90000
+  },
+  {
+    "artist": "Banda C",
+    "name": "Álbum 2 da Banda C",
+    "release_date": "2017-10-08",
+    "num_stars": 3,
+    "ratings": 4.0,
+    "copies_sold": 70000
+  },
+  {
+    "artist": "Banda C",
+    "name": "Álbum 3 da Banda C",
+    "release_date": "2014-06-20",
+    "num_stars": 5,
+    "ratings": 4.9,
+    "copies_sold": 120000
+  }
+]

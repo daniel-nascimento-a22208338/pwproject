@@ -1,0 +1,35 @@
+<!-- curso/curso_detail.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h1>{{ curso.nome }}</h1>
+  <p>{{ curso.descricao }}</p>
+
+  <!-- Botão para adicionar nova disciplina -->
+  {% if request.user.is_authenticated and pode_adicionar %}
+    <form action="{% url 'curso:criar_disciplina' curso.id %}" method="get" style="display:inline;">
+      <button type="submit">Adicionar Nova Disciplina</button>
+    </form>
+  {% endif %}
+
+  <h2>Disciplinas</h2>
+  <ul>
+    {% for disciplina in curso.disciplinas.all %}
+      <li>
+        <a href="{% url 'curso:disciplina_detail' disciplina.id %}">{{ disciplina.nome }}</a>
+        <!-- Botões para editar e apagar disciplinas -->
+        {% if request.user.is_authenticated and pode_editar %}
+          <form action="{% url 'curso:editar_disciplina' disciplina.id %}" method="get" style="display:inline;">
+            <button type="submit">Editar</button>
+          </form>
+        {% endif %}
+        {% if request.user.is_authenticated and pode_apagar %}
+          <form action="{% url 'curso:apagar_disciplina' disciplina.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta disciplina?')">Apagar</button>
+          </form>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página de Cursos</title>
+    <!-- Adicione seus estilos CSS aqui -->
+    <link rel="stylesheet" type="text/css" href="{% static 'curso/estilos.css' %}">
+</head>
+<body>
+<header>
+    <h1>Meu Site</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'curso:cursos' %}">Lista de Cursos</a></li>
+            <!-- Exibir os botões corretos dependendo da autenticação do usuário -->
+            {% if request.user.is_authenticated %}
+                <!-- Botão para Logout -->
+                <li>
+                    <form action="{% url 'curso:logout' %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+                <li><span>Bem-vindo, {{ request.user.username }}!</span></li>
+            {% else %}
+                <!-- Botão para Login -->
+                <li>
+                    <form action="{% url 'curso:login' %}" method="get" style="display:inline;">
+                        <button type="submit">Login</button>
+                    </form>
+                </li>
+                <!-- Botão para Registro -->
+                <li>
+                    <form action="{% url 'curso:register' %}" method="get" style="display:inline;">
+                        <button type="submit">Registro</button>
+                    </form>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- Conteúdo principal da página -->
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    © 2024 Meus Cursos
+</footer>
+
+<!-- Adicione seus scripts JavaScript aqui -->
+<script src="scripts.js"></script>
+</body>
+</html>

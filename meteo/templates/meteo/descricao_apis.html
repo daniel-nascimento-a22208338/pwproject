@@ -1,0 +1,77 @@
+{% extends 'meteo/layout.html' %}
+
+{% block content %}
+<h2>Descrição das APIs de Previsão Meteorológica</h2>
+
+<h3>Tipos de Clima</h3>
+<p>Esta API fornece uma lista de tipos de clima.</p>
+<p><strong>URL:</strong> <a href="{{ weather_types_url }}" target="_blank">{{ weather_types_url }}</a></p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<pre><code>{
+  "idWeatherType": 1,
+  "descIdWeatherTypePT": "Céu limpo"
+}</code></pre>
+
+<h3>Distritos e Ilhas</h3>
+<p>Esta API fornece uma lista de distritos e ilhas.</p>
+<p><strong>URL:</strong> <a href="{{ distrits_islands_url }}" target="_blank">{{ distrits_islands_url }}</a></p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<pre><code>{
+  "globalIdLocal": 1010500,
+  "local": "Lisboa"
+}</code></pre>
+
+<h3>Endpoints da API Interna</h3>
+
+<h4>1. Listagem de Cidades</h4>
+<p><strong>Descrição:</strong> Este endpoint retorna uma lista de todas as cidades disponíveis na API.</p>
+<p><strong>URL:</strong> <code>/api/cidades</code></p>
+<p><strong>Método:</strong> GET</p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<pre><code>{
+  "cidades": [
+    "Lisboa",
+    "Porto",
+    "Madrid",
+    "Paris",
+    "Nova York"
+  ]
+}</code></pre>
+
+<h4>2. Previsão Meteorológica de Hoje para uma Cidade</h4>
+<p><strong>Descrição:</strong> Este endpoint retorna a previsão meteorológica para hoje de uma cidade específica.</p>
+<p><strong>URL:</strong> <code>/api/previsao/hoje</code></p>
+<p><strong>Método:</strong> GET</p>
+<p><strong>Parâmetros de Query:</strong> <code>cidade</code> (string): Nome da cidade para a qual a previsão é solicitada.</p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<pre><code>{
+  "cidade": "Lisboa",
+  "data": "2024-06-05",
+  "temperatura_minima": 18.5,
+  "temperatura_maxima": 25.3,
+  "descricao_tempo": "Parcialmente nublado",
+  "precipitacao": 0,
+  "icone_url": "https://example.com/icons/partly_cloudy.png"
+}</code></pre>
+
+<h4>3. Previsão Meteorológica para os Próximos 5 Dias para uma Cidade</h4>
+<p><strong>Descrição:</strong> Este endpoint retorna a previsão meteorológica para os próximos 5 dias de uma cidade específica.</p>
+<p><strong>URL:</strong> <code>/api/previsao/proximos5dias</code></p>
+<p><strong>Método:</strong> GET</p>
+<p><strong>Parâmetros de Query:</strong> <code>cidade</code> (string): Nome da cidade para a qual a previsão é solicitada.</p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<pre><code>{
+  "cidade": "Lisboa",
+  "previsoes": [
+    {
+      "data": "2024-06-05",
+      "temperatura_minima": 18.5,
+      "temperatura_maxima": 25.3,
+      "descricao_tempo": "Parcialmente nublado",
+      "precipitacao": 0,
+      "icone_url": "https://example.com/icons/partly_cloudy.png"
+    }
+  ]
+}</code></pre>
+
+{% endblock %}

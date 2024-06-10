@@ -1,0 +1,67 @@
+[
+  {
+    "nome": "Queen",
+    "genero": "Rock",
+    "formada_em": "1970-01-01",
+    "cidade_origem": "Londres",
+    "descricao": "Banda de rock britânica",
+    "integrantes": [
+      {"firstName": "Freddie", "lastName": "Mercury", "age": 45, "dateOfBirth": "1946-09-05", "instrument": "Vocal"},
+      {"firstName": "Brian", "lastName": "May", "age": 76, "dateOfBirth": "1947-07-19", "instrument": "Guitarra"},
+      {"firstName": "Roger", "lastName": "Taylor", "age": 74, "dateOfBirth": "1949-07-26", "instrument": "Bateria"},
+      {"firstName": "John", "lastName": "Deacon", "age": 72, "dateOfBirth": "1951-08-19", "instrument": "Baixo"}
+    ]
+  },
+  {
+    "nome": "The Beatles",
+    "genero": "Rock",
+    "formada_em": "1960-01-01",
+    "cidade_origem": "Liverpool",
+    "descricao": "Banda de rock britânica",
+    "integrantes": [
+      {"firstName": "John", "lastName": "Lennon", "age": 40, "dateOfBirth": "1940-10-09", "instrument": "Vocal"},
+      {"firstName": "Paul", "lastName": "McCartney", "age": 81, "dateOfBirth": "1942-06-18", "instrument": "Baixo"},
+      {"firstName": "George", "lastName": "Harrison", "age": 58, "dateOfBirth": "1943-02-25", "instrument": "Guitarra"},
+      {"firstName": "Ringo", "lastName": "Starr", "age": 83, "dateOfBirth": "1940-07-07", "instrument": "Bateria"}
+    ]
+  },
+  {
+    "nome": "Coldplay",
+    "genero": "Rock Alternativo",
+    "formada_em": "1996-01-01",
+    "cidade_origem": "Londres",
+    "descricao": "Banda de rock alternativo britânica",
+    "integrantes": [
+      {"firstName": "Chris", "lastName": "Martin", "age": 47, "dateOfBirth": "1977-03-02", "instrument": "Vocal"},
+      {"firstName": "Jonny", "lastName": "Buckland", "age": 46, "dateOfBirth": "1977-09-11", "instrument": "Guitarra"},
+      {"firstName": "Guy", "lastName": "Berryman", "age": 45, "dateOfBirth": "1978-04-12", "instrument": "Baixo"},
+      {"firstName": "Will", "lastName": "Champion", "age": 45, "dateOfBirth": "1978-07-31", "instrument": "Bateria"}
+    ]
+  },
+  {
+    "nome": "U2",
+    "genero": "Rock",
+    "formada_em": "1976-01-01",
+    "cidade_origem": "Dublin",
+    "descricao": "Banda de rock irlandesa",
+    "integrantes": [
+      {"firstName": "Bono", "lastName": "Vox", "age": 63, "dateOfBirth": "1960-05-10", "instrument": "Vocal"},
+      {"firstName": "The", "lastName": "Edge", "age": 62, "dateOfBirth": "1961-08-08", "instrument": "Guitarra"},
+      {"firstName": "Adam", "lastName": "Clayton", "age": 64, "dateOfBirth": "1960-03-13", "instrument": "Baixo"},
+      {"firstName": "Larry", "lastName": "Mullen Jr.", "age": 62, "dateOfBirth": "1961-10-31", "instrument": "Bateria"}
+    ]
+  },
+  {
+    "nome": "Foo Fighters",
+    "genero": "Rock",
+    "formada_em": "1994-01-01",
+    "cidade_origem": "Seattle",
+    "descricao": "Banda de rock americana",
+    "integrantes": [
+      {"firstName": "Dave", "lastName": "Grohl", "age": 55, "dateOfBirth": "1969-01-14", "instrument": "Vocal"},
+      {"firstName": "Pat", "lastName": "Smear", "age": 64, "dateOfBirth": "1959-08-05", "instrument": "Guitarra"},
+      {"firstName": "Nate", "lastName": "Mendel", "age": 54, "dateOfBirth": "1968-12-02", "instrument": "Baixo"},
+      {"firstName": "Taylor", "lastName": "Hawkins", "age": 50, "dateOfBirth": "1972-02-17", "instrument": "Bateria"}
+    ]
+  }
+]

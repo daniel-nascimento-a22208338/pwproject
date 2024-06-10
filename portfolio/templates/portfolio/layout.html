@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/estilos.css' %}">
+    <link rel="icon" href="/static/portfolio/favicon.ico" type="x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'portfolio:landing_page' %}">Home</a></li>
+                <li><a href="{% url 'portfolio:mebyme' %}">MeByMe</a></li>
+                <li><a href="{% url 'portfolio:about' %}">About</a></li>
+                <li><a href="{% url 'bands:bandas_list' %}">Bandas</a></li>
+                <li><a href="{% url 'artigos:artigos_list' %}">Artigos</a></li>
+                <li><a href="{% url 'curso:cursos' %}">Curso</a></li>
+                <li><a href="{% url 'meteo:previsao_lisboa' %}">Meteorologia</a></li>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'portfolio:logout' %}"><button>Logout</button></a>
+                {% else %}
+                    <a href="{% url 'portfolio:login' %}"><button>Login</button></a>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="header-content">
+            <div class="tic-tac-toe">
+                <h2>Tic-Tac-Toe</h2>
+                <div class="board">
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                </div>
+                <button id="restartButton">Restart</button>
+            </div>
+            <div class="clock">
+                <div id="relogio"></div>
+                <div id="data"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Daniel Nascimento </p>
+    </footer>
+    <script src="{% static 'portfolio/script.js' %}"></script>
+</body>
+</html>

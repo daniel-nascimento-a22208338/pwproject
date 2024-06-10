@@ -1,0 +1,18 @@
+{% extends 'praias/base.html' %}
+
+{% block title %}Praias{% endblock %}
+
+{% block content %}
+    <h2>Praias por Região</h2>
+    {% for regiao in regioes %}
+        <h3>{{ regiao.nome }}</h3>
+        <ul>
+            {% for praia in regiao.praia_set.all %}
+                <li>
+                    <a href="{% url 'praias:detalhes_praia' praia.id %}">{{ praia.nome }}</a>
+                    (Serviços disponíveis: {% for servico in praia.servicos.all %}{{ servico.nome }}{% if not forloop.last %}, {% endif %}{% endfor %})
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

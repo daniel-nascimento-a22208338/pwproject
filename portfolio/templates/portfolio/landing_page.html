@@ -1,0 +1,17 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block content %}
+{% load static %}
+<div class="hero">
+    <div class="hero-text">
+        <h1>Bem-vindo ao meu Portfolio</h1>
+        <p>Descubra meus projetos e habilidades</p>
+        {% if weather_icon_url %}
+        <a href="{% url 'meteo:previsao_lisboa' %}"><img src="{{ weather_icon_url }}" alt="Weather Icon">
+        </a>
+        {% else %}
+        <p>Erro ao carregar o ícone do tempo.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

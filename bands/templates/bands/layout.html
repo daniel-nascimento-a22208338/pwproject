@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/cf2535d4a0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bands/estilos.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5d1319edfb.js" crossorigin="anonymous"></script>
+    <div class="emoji-skull"></div>
+    <div class="emoji-moai"></div>
+
+    <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'bands:bandas_list' %}"><i class="fa-solid fa-music"></i>Bandas</a>
+    </nav>
+    {% if request.user.is_authenticated %}
+        <div class="user-info">
+            Username: {{ request.user.username }}
+            <a href="{% url 'bands:logout' %}"><button>Logout</button></a>
+        </div>
+    {% else %}
+        <div class="auth-buttons">
+            <a href="{% url 'bands:login' %}"><button>Login</button></a>
+            <a href="{% url 'bands:registro' %}"><button>Register</button></a>
+
+        </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>

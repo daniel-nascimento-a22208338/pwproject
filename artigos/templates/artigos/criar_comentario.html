@@ -1,0 +1,15 @@
+<!-- artigos/criar_comentario.html -->
+{% extends 'artigos/layout.html' %}
+
+{% block title %}Adicionar Comentário{% endblock %}
+
+{% block content %}
+<h2>Adicionar Comentário ao Artigo</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{% url 'artigos:detalhes_artigo' artigo.id %}"><button type="button">Cancelar</button></a>
+{% endblock %}

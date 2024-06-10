@@ -1,0 +1,10 @@
+<!-- curso/logout.html -->
+{% extends 'curso/layout.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<h2>Logout</h2>
+<p>Você saiu com sucesso.</p>
+<a href="{% url 'curso:login' %}">Faça login novamente</a>
+{% endblock %}

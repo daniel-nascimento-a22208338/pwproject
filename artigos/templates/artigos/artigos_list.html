@@ -1,0 +1,40 @@
+<!-- artigos/lista_artigos.html -->
+{% extends 'artigos/layout.html' %}
+
+{% block title %}
+Lista de Artigos
+{% endblock %}
+
+{% block content %}
+<h2>Lista de Artigos</h2>
+
+<!-- Botão para adicionar novo artigo -->
+{% if pode_adicionar %}
+    <form action="{% url 'artigos:criar_artigo' %}" method="get" style="display: inline;">
+        <button type="submit">Adicionar Novo Artigo</button>
+    </form>
+{% endif %}
+
+<ul>
+    {% for artigo in artigos %}
+    <li>
+        <a href="{% url 'artigos:detalhes_artigo' artigo.id %}">{{ artigo.title }}</a>
+
+        <!-- Botões para editar e apagar artigos -->
+        {% if pode_editar %}
+            <form action="{% url 'artigos:editar_artigo' artigo.id %}" method="get" style="display: inline;">
+                <button type="submit">Editar</button>
+            </form>
+        {% endif %}
+        {% if pode_apagar %}
+            <form action="{% url 'artigos:apagar_artigo' artigo.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este artigo?')">Apagar</button>
+            </form>
+        {% endif %}
+    </li>
+    {% empty %}
+    <li>Nenhum artigo encontrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

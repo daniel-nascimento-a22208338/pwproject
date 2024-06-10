@@ -1,0 +1,15 @@
+<!-- artigos/criar_artigo.html -->
+{% extends 'artigos/layout.html' %}
+
+{% block title %}Criar Novo Artigo{% endblock %}
+
+{% block content %}
+<h2>Criar Novo Artigo</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{% url 'artigos:artigos_list' %}"><button type="button">Cancelar</button></a>
+{% endblock %}

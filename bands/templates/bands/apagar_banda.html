@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apagar Banda</title>
+</head>
+<body>
+    <h1>Tem certeza que deseja apagar {{ banda.nome }}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Sim, Apagar">
+    </form>
+</body>
+</html>

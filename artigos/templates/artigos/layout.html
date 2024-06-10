@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lista de Artigos{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'artigos/estilos.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>Meu Site de Artigos</h1>
+        <nav>
+            <!-- Botão para lista de artigos -->
+            <form action="{% url 'artigos:artigos_list' %}" method="get" style="display: inline;">
+                <button type="submit">Lista de Artigos</button>
+            </form>
+
+            <!-- Verificação de autenticação -->
+            {% if request.user.is_authenticated %}
+                <!-- Botão para logout -->
+                <form action="{% url 'artigos:logout' %}" method="get" style="display: inline;">
+                    <button type="submit">Logout</button>
+                </form>
+                <span>Bem-vindo, {{ request.user.username }}!</span>
+            {% else %}
+                <!-- Botão para login -->
+                <form action="{% url 'artigos:login' %}" method="get" style="display: inline;">
+                    <button type="submit">Login</button>
+                </form>
+                <!-- Botão para registro -->
+                <form action="{% url 'artigos:register' %}" method="get" style="display: inline;">
+                    <button type="submit">Registro</button>
+                </form>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Meu Site de Artigos. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

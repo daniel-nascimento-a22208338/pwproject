@@ -1,0 +1,39 @@
+<!-- bands/album.html -->
+{% extends "bands/layout.html" %}
+
+{% block title %}{{ album.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ album.name }}</h2>
+<img src="{{ album.capa.url }}" alt="{{ album.name }} - Foto">
+
+<!-- Botão para adicionar nova música -->
+{% if pode_adicionar %}
+    <form action="{% url 'bands:criar_musica' album.id %}" method="get" style="display:inline;">
+        <button type="submit">Adicionar Nova Música</button>
+    </form>
+{% endif %}
+
+<!-- Lista de músicas do álbum -->
+<ul>
+    {% for musica in musicas %}
+    <li>
+        <a href="{% url 'bands:detalhes_musica' musica.id %}">{{ musica.nome }}</a>
+
+        <!-- Botões para editar e excluir a música -->
+        {% if pode_editar %}
+            <form action="{% url 'bands:editar_musica' musica.id %}" method="get" style="display:inline;">
+                <button type="submit">Editar</button>
+            </form>
+        {% endif %}
+        {% if pode_apagar %}
+            <form action="{% url 'bands:apagar_musica' musica.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta música?')">Excluir</button>
+            </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

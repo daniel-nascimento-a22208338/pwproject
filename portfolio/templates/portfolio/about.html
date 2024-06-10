@@ -1,0 +1,36 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block content %}
+<div class="about">
+    <h1>Sobre este Website</h1>
+    <p>Trabalhar com Django envolve criar apps com models para definir a estrutura do banco de dados e views para controlar a lógica. Utilizamos templates HTML para renderizar o conteúdo, aplicamos CSS para estilizar e JavaScript para interatividade.</p>
+
+    <h2>Tecnologias Utilizadas</h2>
+    <ul>
+        <li>Django</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+    </ul>
+
+    <h2>Vídeos Explicativos</h2>
+    <div class="video">
+        <h3>Django Hands-On: Explicação para Leigos</h3>
+        <p>Este vídeo de 1 minuto explica de forma simples e direta como o Django funciona, baseado no padrão MVC (Model-View-Controller). Explicamos a estrutura básica de um projeto Django, incluindo projeto, aplicação, models, views, urls e templates.</p>
+        <video controls>
+            <source src="/static/portfolio/VideoDjango.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+
+    <div class="video">
+        <h3>Visita Guiada ao Projeto Django</h3>
+        <p>Este vídeo de 1 minuto oferece uma visita guiada ao projeto Django, mostrando suas aplicações e páginas, e explicando como cada parte se conecta para criar um website funcional.</p>
+        <video controls>
+            <source src="/static/portfolio/sitesPW.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!-- curso/curso_list.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h1>Lista de Cursos</h1>
+
+  <!-- Botão para adicionar novo curso -->
+  {% if pode_adicionar %}
+    <form action="{% url 'curso:criar_curso' %}" method="get" style="display:inline;">
+      <button type="submit">Adicionar Novo Curso</button>
+    </form>
+  {% endif %}
+
+  <ul>
+    {% for curso in cursos %}
+      <li>
+        <a href="{% url 'curso:curso_detail' curso_id=curso.id %}">{{ curso.nome }}</a>
+        <!-- Botões para editar e apagar cursos -->
+        {% if pode_editar %}
+          <form action="{% url 'curso:editar_curso' curso.id %}" method="get" style="display:inline;">
+            <button type="submit">Editar</button>
+          </form>
+        {% endif %}
+        {% if pode_apagar %}
+          <form action="{% url 'curso:apagar_curso' curso.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este curso?')">Apagar</button>
+          </form>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

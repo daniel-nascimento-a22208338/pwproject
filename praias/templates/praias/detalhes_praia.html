@@ -1,0 +1,20 @@
+{% extends 'praias/base.html' %}
+
+{% block title %}Detalhes da Praia{% endblock %}
+
+{% block content %}
+    <h2>{{ praia.nome }}</h2>
+    <p><strong>Região:</strong> {{ praia.regiao.nome }}</p>
+    <p><strong>Descrição:</strong> {{ praia.descricao }}</p>
+    <p><strong>Serviços Disponíveis:</strong>
+        <ul>
+            {% for servico in praia.servicos.all %}
+                <li>{{ servico.nome }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    {% if praia.imagem %}
+        <img src="{{ praia.imagem.url }}" alt="{{ praia.nome }} - Foto">
+    {% endif %}
+    <p><a href="{% url 'praias:lista_praias' %}">Voltar para Lista de Praias</a></p>
+{% endblock %}

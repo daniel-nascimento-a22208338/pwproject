@@ -1,0 +1,10 @@
+<!-- app/logout.html -->
+{% extends 'artigos/layout.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<h2>Logout</h2>
+<p>Você saiu com sucesso.</p>
+<a href="{% url 'artigos:login' %}">Faça login novamente</a>
+{% endblock %}

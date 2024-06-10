@@ -1,0 +1,42 @@
+{% extends 'bands/layout.html' %}
+
+{% block title %}
+Lista de Bandas
+{% endblock %}
+
+{% block content %}
+<h2>Lista de Bandas</h2>
+
+<!-- Botão para adicionar nova banda -->
+{% if pode_adicionar %}
+    <form action="{% url 'bands:criar_banda' %}" method="get">
+        <button type="submit">Adicionar Nova Banda</button>
+    </form>
+{% endif %}
+
+<!-- Lista de bandas existentes -->
+<ul>
+    {% for banda in bandas %}
+    <li>
+    <a href="{% url 'bands:detalhes_banda' banda.id %}">
+      {{ banda.nome }}
+    </a>
+        <!-- Botões para editar e excluir, se o usuário tiver permissão -->
+        {% if pode_editar %}
+            <form action="{% url 'bands:editar_banda' banda.id %}" method="get" style="display:inline;">
+                <button type="submit">Editar</button>
+            </form>
+        {% endif %}
+        {% if pode_apagar %}
+            <form action="{% url 'bands:apagar_banda' banda.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta banda?')">Excluir</button>
+            </form>
+        {% endif %}
+    </li>
+    {% empty %}
+    <li>Nenhuma banda encontrada.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

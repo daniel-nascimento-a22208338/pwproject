@@ -1,0 +1,12 @@
+<!-- curso/confirmar_apagar_projeto.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h2>Confirmar Exclusão</h2>
+  <p>Você tem certeza de que deseja excluir o projeto "{{ projeto.nome }}"?</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, Excluir</button>
+    <a href="{% url 'curso:disciplina_detail' projeto.disciplina.id %}"><button type="button">Cancelar</button></a>
+  </form>
+{% endblock %}

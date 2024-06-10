@@ -1,0 +1,71 @@
+{% extends "artigos/layout.html" %}
+
+{% block title %}{{ artigo.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ artigo.title }}</h2>
+
+{% if artigo.categories.exists %}
+    <p>
+        Categorias:
+        {% for category in artigo.categories.all %}
+            {{ category.name }}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+{% endif %}
+
+<p>{{ artigo.content }}</p>
+
+{% if artigo.author %}
+    <h3>Autor: <a href="{% url 'artigos:detalhes_autor' autor_id=artigo.author.pk %}">{{ artigo.author.pessoa.nome }}</a></h3>
+    {% if artigo.author.pessoa.foto_perfil %}
+        <p>
+            <img src="{{ artigo.author.pessoa.foto_perfil.url }}" alt="{{ artigo.author.pessoa.nome }}">
+        </p>
+    {% else %}
+        <p>Foto de perfil não disponível</p>
+    {% endif %}
+{% endif %}
+
+<hr>
+
+{% if comentarios %}
+    <h3>Comentários:</h3>
+    <ul>
+        {% for comentario in comentarios %}
+            <li>
+                <strong><a href="{% url 'artigos:detalhes_leitor' leitor_id=comentario.commenter.pk %}">{{ comentario.commenter.username }}</a></strong>: {{ comentario.content }}
+                <br>
+                <small>Postado em: {{ comentario.created_at }}</small>
+
+                <!-- Botões para editar e apagar o próprio comentário -->
+                {% if request.user.is_authenticated and comentario.commenter == request.user.leitor %}
+                    <form action="{% url 'artigos:editar_comentario' comentario.id %}" method="get" style="display:inline;">
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form action="{% url 'artigos:apagar_comentario' comentario.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este comentário?')">Excluir</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Nenhum comentário ainda.</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum comentário ainda.</p>
+{% endif %}
+
+<!-- Formulário para adicionar novo comentário -->
+<hr>
+<h3>Adicionar Novo Comentário:</h3>
+<form action="{% url 'artigos:criar_comentario' artigo.id %}" method="post">
+    {% csrf_token %}
+    <textarea name="content" rows="4" cols="40" placeholder="Escreva seu comentário..."></textarea>
+    <br>
+    <button type="submit">Enviar</button>
+</form>
+
+{% endblock %}

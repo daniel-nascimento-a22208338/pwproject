@@ -1,0 +1,42 @@
+<!-- bands/detalhes_banda.html -->
+{% extends "bands/layout.html" %}
+
+{% block title %}{{ banda.nome }}{% endblock %}
+
+{% block content %}
+<h2>{{ banda.nome }}</h2>
+<img src="{{ banda.imagem.url }}" alt="{{ banda.nome }} - Foto">
+<p>{{ banda.descricao }}</p>
+<p><a href="{{ banda.website }}">Veja o Site</a></p>
+
+<!-- Botão para adicionar novo álbum -->
+{% if pode_adicionar %}
+    <form action="{% url 'bands:criar_album' %}" method="get" style="display:inline;">
+        <input type="hidden" name="artist_id" value="{{ banda.id }}">
+        <button type="submit">Adicionar Novo Álbum</button>
+    </form>
+{% endif %}
+
+<!-- Lista de álbuns existentes -->
+<ul>
+    {% for album in albuns %}
+    <li>
+        <a href="{% url 'bands:detalhes_album' album.id %}">{{ album.name }}</a>
+
+        <!-- Botões para editar e excluir o álbum -->
+        {% if pode_editar %}
+            <form action="{% url 'bands:editar_album' album.id %}" method="get" style="display:inline;">
+                <button type="submit">Editar</button>
+            </form>
+        {% endif %}
+        {% if pode_apagar %}
+            <form action="{% url 'bands:apagar_album' album.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este álbum?')">Excluir</button>
+            </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+<!-- curso/criar_disciplina.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h2>Criar Nova Disciplina para o Curso: {{ curso.nome }}</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="{% url 'curso:curso_detail' curso.id %}"><button type="button">Cancelar</button></a>
+{% endblock %}

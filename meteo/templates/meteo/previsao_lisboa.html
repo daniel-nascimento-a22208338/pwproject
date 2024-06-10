@@ -1,0 +1,12 @@
+{% extends 'meteo/layout.html' %}
+
+{% block title %}Previsão {{ cidade }}{% endblock %}
+
+{% block content %}
+    <h2>Previsão Meteorológica para {{ cidade }}</h2>
+    <p>Data: {{ data }}</p>
+    <p>Temperatura Mínima: {{ temp_min }}°C</p>
+    <p>Temperatura Máxima: {{ temp_max }}°C</p>
+    <p>Descrição do Tempo: {{ descricao_tempo }}</p>
+    <img src="{{ icon_url }}" alt="Icone do Tempo">
+{% endblock %}

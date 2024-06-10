@@ -1,0 +1,9 @@
+{% extends "bands/layout.html" %}
+{% block title %}{{musica.nome}}{% endblock %}
+
+{% block content %}
+<h2>{{musica.nome }}</h2>
+<p>{{musica.duracao}}</p>
+<p>{{musica.letra}}</p>
+<p><a href="{{ musica.link_Spotify }}">Ouça a música</a></p>
+{% endblock %}

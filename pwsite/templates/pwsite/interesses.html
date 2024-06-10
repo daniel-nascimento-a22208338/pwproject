@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Interesses em Programação Web</title>
+</head>
+<body>
+    <header>
+        <h1>Meus Interesses em Programação Web</h1>
+        <nav>
+            <a href="{% url 'pwsite:index' %}">Home</a>
+            <a href="{% url 'pwsite:about' %}">Sobre</a>
+            <a href="{% url 'pwsite:interests' %}">Interesses</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>O que eu mais gosto de aprender em Programação Web</h2>
+        <p>Na disciplina de Programação Web, tenho me interessado especialmente por:</p>
+        <ul>
+            <li><strong>Desenvolvimento de interfaces responsivas:</strong> Aprender a criar layouts que se adaptam a diferentes dispositivos.</li>
+            <li><strong>Integração de APIs:</strong> Explorar como conectar minha aplicação web a serviços externos através de APIs.</li>
+            <li><strong>Usabilidade e acessibilidade:</strong> Entender como projetar interfaces amigáveis e acessíveis para todos os usuários.</li>
+        </ul>
+        <p>Tenho também interesse em aprender mais sobre:</p>
+        <ul>
+            <li><strong>Frameworks modernos:</strong> Explorar outros frameworks além do Django para construir aplicações web.</li>
+            <li><strong>Segurança:</strong> Aprofundar meus conhecimentos em práticas de segurança aplicadas ao desenvolvimento web.</li>
+            <li><strong>Desenvolvimento de projetos pessoais:</strong> Ter ideias para criar sites e aplicações que possam ser úteis ou divertidos para os usuários.</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; {{data}} Meus Interesses em Programação Web - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

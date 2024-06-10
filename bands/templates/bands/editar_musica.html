@@ -1,0 +1,17 @@
+<!-- bands/editar_musica.html -->
+{% extends "bands/layout.html" %}
+
+{% block title %}Editar Música{% endblock %}
+
+{% block content %}
+<h2>Editar Música: {{ musica.nome }}</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<!-- Botão de Cancelar para retornar aos detalhes do álbum -->
+<a href="{% url 'bands:detalhes_album' album.id %}"><button type="button">Cancelar</button></a>
+{% endblock %}

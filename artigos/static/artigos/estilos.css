@@ -1,0 +1,194 @@
+/* styles.css */
+
+/* Reset básico para remover margens e preenchimentos padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo básico para o corpo da página */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Estilo para o cabeçalho */
+header {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  flex: 0 1 auto;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+/* Estilo para o menu de navegação */
+nav {
+  background-color: #495057;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #343a40;
+  border-radius: 5px;
+}
+
+nav ul li a:visited {
+  color: white; /* Mesma cor após o clique */
+}
+
+/* Estilo para a seção principal */
+.content, main {
+  flex: 1 1 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+section h2 {
+  margin-bottom: 20px;
+  font-size: 1.75em;
+}
+
+section p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+section a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+section a:hover {
+  text-decoration: underline;
+}
+
+section a:visited {
+  color: #007bff; /* Mesma cor após o clique */
+}
+
+/* Estilo para os botões */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para o rodapé */
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  flex: 0 1 auto;
+}
+
+/* Media Queries para tornar o layout responsivo */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Alinhar itens em coluna em telas pequenas */
+    align-items: center;
+    font-size: 0.8em;
+  }
+
+  nav ul li {
+    margin: 5px 0; /* Adicionar espaço entre os itens */
+  }
+
+  .content, main {
+    padding: 10px; /* Ajustar o padding */
+  }
+
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  header, nav, footer {
+    padding: 10px; /* Ajustar o padding para elementos de topo e rodapé */
+  }
+
+  header h1 {
+    font-size: 1.5em; /* Ajustar tamanho da fonte do cabeçalho para telas menores */
+  }
+
+  nav ul li a {
+    padding: 10px 20px; /* Ajustar o padding dos links */
+    width: 100%; /* Fazer com que os links ocupem toda a largura */
+    text-align: center; /* Centralizar o texto dos links */
+  }
+
+  button {
+    width: 100%; /* Fazer com que os botões ocupem toda a largura em telas pequenas */
+    text-align: center; /* Centralizar o texto dos botões */
+  }
+}
+
+/* Estilo para imagens */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Correção e otimização adicional */
+.content h1, main h1 {
+  margin-bottom: 30px;
+}
+
+main h3 {
+  margin-bottom: 30px;
+}

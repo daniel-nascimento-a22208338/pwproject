@@ -1,0 +1,28 @@
+{% extends "artigos/layout.html" %}
+
+{% block title %}Perfil do Autor - {{ autor.pessoa.nome }}{% endblock %}
+
+{% block content %}
+<h2>Perfil do Autor</h2>
+
+<div>
+    <h3>{{ autor.pessoa.nome }}</h3>
+    {% if autor.pessoa.foto_perfil %}
+        <img src="{{ autor.pessoa.foto_perfil.url }}" alt="{{ autor.pessoa.nome }}">
+    {% else %}
+        <p>Foto de perfil não disponível</p>
+    {% endif %}
+
+    <p>{{ autor.bio }}</p>
+    {% if autor.redes_sociais %}
+        <p>Redes Sociais: <a href="{{ autor.redes_sociais }}" target="_blank">{{ autor.redes_sociais }}</a></p>
+    {% endif %}
+    {% if autor.website %}
+        <p>Website: <a href="{{ autor.website }}" target="_blank">{{ autor.website }}</a></p>
+    {% endif %}
+    {% if autor.experiencia %}
+        <p>Experiência: {{ autor.experiencia }}</p>
+    {% endif %}
+</div>
+
+{% endblock %}

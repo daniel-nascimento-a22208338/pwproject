@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - NovaApp</title>
+    <style>
+        body {
+            background-color: lightblue;
+            color: navy;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            background-color: navy;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to NovaApp</h1>
+        <nav>
+            <a href="{% url 'novaapp:home' %}">Home</a> |
+            <a href="{% url 'novaapp:about' %}">About</a> |
+            <a href="{% url 'novaapp:contact' %}">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Home Page</h2>
+        <p>This is the home page of NovaApp. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NovaApp - All rights reserved.</p>
+    </footer>
+</body>
+</html>

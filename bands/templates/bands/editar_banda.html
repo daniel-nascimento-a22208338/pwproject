@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Banda</title>
+</head>
+<body>
+    <h1>Editar {{ banda.nome }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Atualizar">
+    </form>
+</body>
+</html>

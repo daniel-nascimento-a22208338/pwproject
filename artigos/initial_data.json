@@ -1,0 +1,118 @@
+{
+  "Pessoa": [
+    {
+      "id": 14,
+      "nome": "Maria Silva",
+      "email": "maria.silva@example.com",
+      "data_criacao": "2024-01-01T12:00:00Z",
+      "foto_perfil": "fotos_perfil/maria.jpg",
+      "interesses": "Leitura, Viagens"
+    },
+    {
+      "id": 24,
+      "nome": "João Pereira",
+      "email": "joao.pereira@example.com",
+      "data_criacao": "2024-01-02T12:00:00Z",
+      "foto_perfil": "fotos_perfil/joao.jpg",
+      "interesses": "Escrita, Tecnologia"
+    }
+  ],
+  "Leitor": [
+    {
+      "id": 14,
+      "pessoa_id": 1,
+      "username": "mariasilva",
+      "email": "maria.silva@example.com",
+      "date_joined": "2024-01-01T12:00:00Z"
+    },
+    {
+      "id": 24,
+      "pessoa_id": 2,
+      "username": "joaopereira",
+      "email": "joao.pereira@example.com",
+      "date_joined": "2024-01-02T12:00:00Z"
+    }
+  ],
+  "Autor": [
+    {
+      "id": 14,
+      "pessoa_id": 41,
+      "bio": "Maria é uma escritora apaixonada por romances.",
+      "redes_sociais": "http://twitter.com/mariasilva",
+      "website": "http://mariasilva.com",
+      "experiencia": "10 anos escrevendo livros"
+    },
+    {
+      "id": 24,
+      "pessoa_id": 24,
+      "bio": "João é um autor de tecnologia e inovação.",
+      "redes_sociais": "http://twitter.com/joaopereira",
+      "website": "http://joaopereira.com",
+      "experiencia": "5 anos escrevendo sobre tecnologia"
+    }
+  ],
+  "Category": [
+    {
+      "id": 14,
+      "name": "Romance"
+    },
+    {
+      "id": 24,
+      "name": "Tecnologia"
+    }
+  ],
+  "Article": [
+    {
+      "id": 14,
+      "title": "A Magia do Amor",
+      "content": "Este é um artigo sobre a magia do amor.",
+      "author_id": 14,
+      "created_at": "2024-01-03T12:00:00Z",
+      "updated_at": "2024-01-03T12:00:00Z",
+      "rating": 4.5,
+      "views": 150
+    },
+    {
+      "id": 24,
+      "title": "Inovações Tecnológicas",
+      "content": "Este é um artigo sobre as últimas inovações tecnológicas.",
+      "author_id": 24,
+      "created_at": "2024-01-04T12:00:00Z",
+      "updated_at": "2024-01-04T12:00:00Z",
+      "rating": 4.7,
+      "views": 200
+    }
+  ],
+  "Comment": [
+    {
+      "id": 14,
+      "article_id": 14,
+      "commenter_id": 24,
+      "content": "Excelente artigo sobre amor!",
+      "created_at": "2024-01-05T12:00:00Z"
+    },
+    {
+      "id": 24,
+      "article_id": 24,
+      "commenter_id": 14,
+      "content": "Muito informativo sobre tecnologia.",
+      "created_at": "2024-01-06T12:00:00Z"
+    }
+  ],
+  "Rating": [
+    {
+      "id": 14,
+      "article_id": 14,
+      "rater_id": 24,
+      "value": 5,
+      "created_at": "2024-01-05T12:00:00Z"
+    },
+    {
+      "id": 24,
+      "article_id": 24,
+      "rater_id": 14,
+      "value": 4,
+      "created_at": "2024-01-06T12:00:00Z"
+    }
+  ]
+}

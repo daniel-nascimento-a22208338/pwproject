@@ -1,0 +1,12 @@
+<!-- curso/criar_curso.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h2>Criar Novo Curso</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+  <a href="{% url 'curso:cursos' %}"><button type="button">Cancelar</button></a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'bands/layout.html' %}
+
+{% block content %}
+    <h3>Registro</h3>
+    <form action="{% url 'bands:registro' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Seu username..">
+        <input type="text" name="nome" placeholder="Seu nome..">
+        <input type="text" name="apelido" placeholder="Seu apelido..">
+        <input type="email" name="email" placeholder="Seu email..">
+        <input type="password" name="password" placeholder="Defina sua senha..">
+        <input type="submit" value="Criar">
+    </form>
+    <a href="{% url 'bands:login' %}">Cancelar</a>
+{% endblock %}

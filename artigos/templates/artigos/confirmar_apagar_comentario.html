@@ -1,0 +1,14 @@
+<!-- artigos/confirmar_apagar_comentario.html -->
+{% extends 'artigos/layout.html' %}
+
+{% block title %}Confirmar Exclusão do Comentário{% endblock %}
+
+{% block content %}
+<h2>Confirmar Exclusão</h2>
+<p>Você tem certeza de que deseja excluir o comentário?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, Excluir</button>
+    <a href="{% url 'artigos:detalhes_artigo' comentario.article.id %}"><button type="button">Cancelar</button></a>
+</form>
+{% endblock %}

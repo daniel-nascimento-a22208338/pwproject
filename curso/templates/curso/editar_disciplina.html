@@ -1,0 +1,18 @@
+<!-- curso/editar_disciplina.html -->
+{% extends 'curso/layout.html' %}
+
+{% block content %}
+  <h2>Editar Disciplina: {{ disciplina.nome }}</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar Alterações</button>
+  </form>
+
+  <!-- Redirecionar ao primeiro curso associado -->
+  {% if primeiro_curso %}
+    <a href="{% url 'curso:curso_detail' primeiro_curso.id %}"><button type="button">Cancelar e Retornar a {{ primeiro_curso.nome }}</button></a>
+  {% else %}
+    <a href="{% url 'curso:cursos' %}"><button type="button">Cancelar</button></a>
+  {% endif %}
+{% endblock %}
